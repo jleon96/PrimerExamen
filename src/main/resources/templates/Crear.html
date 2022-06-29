@@ -2,62 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
     <h1 th:text="Crear"></h1>
-    <title>Crear</title>
+    <title>Crear Evento</title>
     <!-- CSS only -->
-    <link href="CSS/CSS.css" rel="stylesheet" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script><!-- comment -->
-
+    <link href="CSS/style.css" rel="stylesheet" />
 
 </head>
-<body style="background: rgb(63,94,251);
-      background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);">
+<body style="background: rgb(34,193,195);
+      background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(184,45,253,1) 100%);">
+    
+    
     <div class="container">
         <!--  Inicio formulario -->
-        <form th:object="${personas}"
+        <form th:object="${evento}"
               th:action="@{/save}"
               method="POST"
               >
 
-            <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{id}">
 
 
             <div class=" form-group mb-3 row">
-                <label for="nombre" class="col-md-2 col-form-label">Nombre</label>
+                <label for="nombre" class="col-md-2 col-form-label">Nombre de la Banda</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{nombre}">
                 </div>
             </div>
 
             <div class=" form-group mb-3 row">
-                <label for="Apellido1" class="col-md-2 col-form-label">Apellido1</label>
+                <label for="Genero" class="col-md-2 col-form-label">Genero</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{apellido1}">
+                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{Genero}">
                 </div>
             </div>
 
 
             <div class=" form-group mb-3 row">
-                <label for="apellido2" class="col-md-2 col-form-label">apellido2</label>
+                <label for="precio" class="col-md-2 col-form-label">Precio de la entrada</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{apellido2}">
+                    <input type="number"  class="form-control form-control-sm col-md-6"  th:field="*{precio}">
                 </div>
             </div>
 
 
             <div class=" form-group mb-3 row">
-                <label for="telefono" class="col-md-2 col-form-label">telefono</label>
+                <label for="fecha" class="col-md-2 col-form-label">Fecha</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control form-control-sm col-md-6"  th:field="*{telefono}">
+                    <input type="text" class="form-control form-control-sm col-md-6"  th:field="*{fecha}">
                 </div>
             </div>
 
 
             <div class=" form-group mb-3 row">
-                <label for="email " class="col-md-2 col-form-label">email</label>
+                <label for="capacidad " class="col-md-2 col-form-label">capacidad</label>
                 <div class="col-sm-10">
-                    <input type="email"  class="form-control form-control-sm col-md-6"  th:field="*{email}">
+                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{capacidad}">
                 </div>
             </div>
 
@@ -66,14 +68,14 @@
 
 
             <div class="form-group mb-3 row">
-                <label for="paises" class="form-control-sm col-form-label col-md-2">lugar</label>
+                <label for="lugar" class="form-control-sm col-form-label col-md-2">Lugar donde sera el evento</label>
                 <div>
-                    <select th:field="*{pais}" class="form-control form-control-sm col-md-6" id="pais" aria-describedby="emailHelp">
+                    <select th:field="*{lugar}" class="form-control form-control-sm col-md-6" id="pais" aria-describedby="emailHelp">
 
                         <option
-                            th:each="x:${paises}"
+                            th:each="x:${lugar}"
                             th:value="${x.id}"
-                            th:text="${x.pais}"
+                            th:text="${x.lugar}"
                             />
 
 
@@ -83,22 +85,6 @@
 
 
 
-            <div class=" form-group mb-3 row">
-                <label for="fecha" class="col-md-2 col-form-label">fecha</label>
-                <div class="col-sm-10">
-                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{fecha}">
-                </div>
-            </div><!-- comment -->
-
-
-
-            <div class=" form-group mb-3 row">
-                <label for="capacidad" class="col-md-2 col-form-label">capacidad</label>
-                <div class="col-sm-10">
-                    <input type="text"  class="form-control form-control-sm col-md-6"  th:field="*{capacidad}">
-                </div>
-            </div>
-
 
 
             <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
@@ -106,7 +92,7 @@
 
 
 
-        <a class="btn btn-primary" th:href="@{/personas/}" role="button">Volver a Inicio</a>
+        <a class="btn btn-primary" th:href="@{/Eventos/}" role="button">Volver a Inicio</a>
 
 
     </div>

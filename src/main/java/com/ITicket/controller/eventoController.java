@@ -43,19 +43,19 @@ public class eventoController {
     }
 
     /*Metodo para crear un evento*/
-    @GetMapping("/eventosN")
-    public String crearPersona(Model model) {
+    @GetMapping("/EventosN")
+    public String crearEvento(Model model) {
         List<lugar> listalugares = lugarService.listCountry();
         model.addAttribute("evento", new evento());
-        model.addAttribute("lugares", listalugares);
-        return "crear";
+        model.addAttribute("lugar", listalugares);
+        return "Crear";
 
     }
 
     @PostMapping("/save")
     public String guardarEvento(@ModelAttribute evento evento) {
         eventoService.saveEvento(evento);
-        return "redirect:/eventos";
+        return "redirect:/Eventos";
 
     }
 
@@ -65,8 +65,8 @@ public class eventoController {
         evento evento = eventoService.getEventoById(idEvento);
         List<lugar> listalugares = lugarService.listCountry();
         model.addAttribute("evento", evento);
-        model.addAttribute("lugares", listalugares);
-        return "crear";
+        model.addAttribute("lugar", listalugares);
+        return "Crear";
 
     }
 
@@ -74,7 +74,7 @@ public class eventoController {
     @GetMapping("/deleteEvento/{id}")
     public String eliminarEvento(@PathVariable("id") Long idEvento) {
         eventoService.delete(idEvento);
-        return "redirect:/eventos";
+        return "redirect:/Eventos";
 
     }
 }

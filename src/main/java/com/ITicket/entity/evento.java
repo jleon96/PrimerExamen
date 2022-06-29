@@ -31,21 +31,6 @@ public class evento implements Serializable {
     private String fecha;
     private String capacidad;
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(String capacidad) {
-        this.capacidad = capacidad;
-    }
 
     
         @ManyToOne
@@ -92,7 +77,22 @@ public class evento implements Serializable {
     public void setLugar(lugar lugar) {
         this.lugar = lugar;
     }
-        
+            public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(String capacidad) {
+        this.capacidad = capacidad;
+    }
+
         
         
 }
